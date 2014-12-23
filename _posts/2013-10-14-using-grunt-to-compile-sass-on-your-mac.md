@@ -16,7 +16,7 @@ To install grunt open up your terminal (/Applications/Utilities/Terminal.app). Y
 Now you make a folder for your project. You can have it setup any way you like (and you should probably have a template for this, since you will end up with this structure everywhere - we do, but for the sake of keeping this tutorial simple, ill just use a simple setup). There are, however, two files you have to have. One is package.json, which contains information (as a json-object) about the project and the dependencies it has (what grunt-modules you need), and the other is Gruntfile.js which holds the tasks that grunt eventually runs. I could explain this further on a pseudo-level, but its way easier to just show an example (if interested, you can find more explanation on gruntjs.com.). 
 
 Your package.json could look like this
-{% highlight javascript %}
+```js
  {
   "name": "my-testproject-name",
   "version": "0.1.0",
@@ -26,7 +26,7 @@ Your package.json could look like this
     "grunt-contrib-sass": "~0.5.0"
   }
 }
-{% endhighlight %}
+```
 
 When you have this file, you can open your terminal (and "cd" to your projects location) and install the dependencies by running
   npm install
@@ -34,7 +34,7 @@ When you have this file, you can open your terminal (and "cd" to your projects l
 This will create a folder called node_modules that holds all the modules you need for this project. You will eventually have lots of duplicates of this folder when you have many projects, but the power of this is that they have the correct versions (According to your package.json file) so nothing will break. 
 
 Now lets make a Gruntfile.js-file that creates a default task that runs watch on our scss-folder and that will run sass:toMarkup (made-up name, but will compile your sass-files) on the files when changed. 
-{% highlight javascript %}
+```js
   module.exports = function(grunt) {
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
@@ -65,7 +65,7 @@ Now lets make a Gruntfile.js-file that creates a default task that runs watch on
 
     grunt.registerTask('default', ['watch']);
   };
-{% endhighlight %}
+```
 
 ##Now you are done!
 Makeake a .scss file and put it in your scss-folder, and then open your terminal and cd to your project-root and start the watcher by running

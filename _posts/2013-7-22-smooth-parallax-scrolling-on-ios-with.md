@@ -30,7 +30,7 @@ You shouldn't use iScroll anywhere I wasn't made for. So setup some kinda system
 
 Ill try to make a quick example to show off what I mean. 
 
-{% highlight html %}
+```html
 <div id="scroller">
   <div class="scrollerContent">
     <!-- the natural-scroll content goes here -->
@@ -39,9 +39,9 @@ Ill try to make a quick example to show off what I mean.
 <div id="parallax-item">
   This is some kinda parallax thing
 </div>
-{% endhighlight %}
+```
 
-{% highlight css %}
+```css
 .touch body, .touch {
   height:100%;
   position:relative;
@@ -60,9 +60,9 @@ Ill try to make a quick example to show off what I mean.
 .touch #parallax-item {
   position:absolute;
 }
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```js
 var myScroller, //the iScroll-object
 paraElem = document.getElementById('parallax-item'); //the parallax-element
 
@@ -97,6 +97,6 @@ function pageHasLoaded() {
   })();
 }
 document.addEventListener('DOMContentLoaded', pageHasLoaded);
-{% endhighlight %}
+```
 
 DEMO: [http://cdpn.io/ixKLz](http://cdpn.io/ixKLz) (the demo contains shims for requestAnimationFrame, extra styling and lots of lorem ipsum…)

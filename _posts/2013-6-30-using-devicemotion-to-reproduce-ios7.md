@@ -18,7 +18,7 @@ Basically there is a window.ondevicemotion that you can assign a function to. In
 It looks something like this
 
 
-{% highlight javascript %}
+```js
 if (window.DeviceMotionEvent) { // check to see if ths feature is available
  var vMov = 0,
      hMov = 0,
@@ -55,6 +55,6 @@ if (window.DeviceMotionEvent) { // check to see if ths feature is available
   }
  }
 }
-{% endhighlight %}
+```
 
 Its not clear (after 2 seconds of googling) how the support of DeviceMotion is, but it works on my iPad3 in iOS6.

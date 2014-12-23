@@ -7,7 +7,7 @@ permalink: /2013/10/animating-line-being-drawn-with-svg/
 
 I looove SVG. Its crisp vectorness makes my retina mac come to life. And when used inline you can interact with the svg-elements like dom-elements with javascript og css. Its fantastic… 
 
-![_config.yml]({{ site.baseurl }}/images/posts/animating-svg.png)
+![_config.yml]({{ site.baseurl }}/images/posts/animating-svg.jpg)
 
 I ran into a situation where I wanted to animate a line being drawn. Offcause SVG came to mind, but there is not really a line-drawing animation feature, so I googled around and found a solution that works pretty great. 
 

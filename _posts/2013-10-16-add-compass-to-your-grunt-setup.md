@@ -24,7 +24,7 @@ in your devDependencies object. (you need to run npm install again to download t
 
 The compass-object inside Gruntfile.js is also slightly different from the sass-one  
 
-{% highlight javascript %}
+```js
   module.exports = function(grunt) {
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
@@ -51,17 +51,17 @@ The compass-object inside Gruntfile.js is also slightly different from the sass-
 
     grunt.registerTask('default', ['watch']);
   };
-{% endhighlight %}
+```
 
 
 The last thing you need is a config.rb file. For some reason compass won't run without it. The default location is the same as your Gruntfile.js-file (so the project root if you're following along), but you can change it if you want to move it out of the way. The minimum configuration required in this file (I've found) is
   sass_dir = "scss"
 
 So now you have compass working in your project. Go ahead and try out the sprite generator, or start out with a simple compass mixin (remember to @import first) like
-{% highlight css %}
+```css
   @import "compass/css3"; 
   div {
     @include box-sizing(border-box);
   }
-{% endhighlight %}
+```
 

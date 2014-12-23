@@ -15,18 +15,18 @@ Traditionally asynchronous functions has been dealt with using the callback patt
 
 The concept is that an asynchronous call will return immediately with an object. That object typically has a “then” method which will take two functions (the success and the error handlers) as parameters. For a jQuery ajax call (which by nature is asynchronous) could look like this. 
 
-{% highlight javascript %}
+```js
 var myRequest = $.ajax(‘http://path-to-file');
 myRequest.then(function(data) {
  // handle the data on success
 },function(error) {
  // handle the error on error
 });
-{% endhighlight %}
+```
 
 You can also make your own promise, and resolve or reject it with some data, to deal with it this way… Maybe just to wrap around a setTimeout call. 
 
-{% highlight javascript %}
+```js
 var myTimeout = new $.Deferred();
 
 setTimeout(function() {
@@ -38,12 +38,12 @@ myTimeout.then(function(value) {
 }, function() {
   //this second function is optional and could be left out in this example.
 });
-{% endhighlight %}
+```
 
 
 Most promise implementations also have a when/all feature, that will turn multiple promises into just one, so it resolves when all the promises resolve, or fails if just one fails. This is very useful if you want to, say, get multiple files via ajax, and then do something (update UI or whatever) when all the files are complete! Could look like this! 
 
-{% highlight javascript %}
+```js
 var london = $.ajax('http://api.openweathermap.org/data/2.5/weather?q=London,uk');
 var copenhagen = $.ajax('http://api.openweathermap.org/data/2.5/weather?q=Copenhagen,dk');
 
@@ -56,12 +56,12 @@ allCities.then(function(data) {
   console.log('one or more failed');
   //one or more failed
 });
-{% endhighlight %}
+```
 
 
 The beauty, and the real power (IMHO), of promises shows itself when you return a new promise from the success/error handler. That way you can build of a chain of “then”’s that will make your sequence of asynchronous actions very visual, and a lot easier to debug. 
 
-{% highlight javascript %}
+```js
 var mySequence = new $.Deferred();
 mySequence.resolve();
 
@@ -93,18 +93,18 @@ mySequence
     }, function() {
         //not here
     });
-{% endhighlight %}
+```
 
 We start off with defining our mySequence as a new $.Deferred, and resolve it right after. Thats just for convenience so we can also start the first action out with a ".then”. This is pretty awesome. But since we are returning a new promise in each “step”, we could easily be listening for another “.then” somewhere completely different in you app. If we overwrite mySequence with the return value of the chain like this. 
 
-{% highlight javascript %}
+```js
 mySequence = mySequence.then( /*same code as before*/ ).then( /*same code as before*/ ).then( /*same code as before*/ );
-{% endhighlight %}
+```
 
 we can then do
-{% highlight javascript %}
+```js
 mySequence = mySequence.then( /*this when the the above is complete*/ );
-{% endhighlight %}
+```
 
 Powerfull stuff, right?
 I hope this helps you understand the power of promises, and that it is available for you today!
