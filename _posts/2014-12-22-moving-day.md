@@ -24,17 +24,11 @@ However, I didn't like the syntax-highligher that comes with it. Turns out if yo
 
 Of cause I changed some styles, changed some configuration and stuff, but the most important (and least-obvious) thing left, was making sure that the moved content would keep its google juice. I could have moved my custom domain, but I've been wanting to skip that anyway and I wanted the ssl-connection that comes with github-pages - so I decided to keep it on the username.github.io-domain. 
 
-Blogger uses a url like domain.tld/year/month/title, which is not quite how jekyll now does url. I added a permalink-variable in the posts header and manually picked a url that comes close to what blogger does ([link to examle](https://raw.githubusercontent.com/filipbech/filipbech.github.io/master/_posts/2013-6-29-mandatory-1st-post.md)).  - however blogger actually uses the `.html`-fileextension. I made a custom `.htaccess`-file for the site and made it so all links poiting to `.../file.html` [redirects with a 301-header to](https://support.google.com/webmasters/answer/93633?hl=en) `.../file/`. It looks like this. 
+Blogger uses a url like domain.tld/year/month/title, which is not quite how jekyll now does url. I added a permalink-variable in the posts header and manually picked a url that comes close to what blogger does ([link to examle](https://raw.githubusercontent.com/filipbech/filipbech.github.io/master/_posts/2013-6-29-mandatory-1st-post.md)).  - however blogger actually uses the `.html`-fileextension. I also needed to redirect requests to the old domain. I made a custom `.htaccess`-file for the old domain and made it so all links poiting to `.../file.html` [redirects with a 301-header to](https://support.google.com/webmasters/answer/93633?hl=en) `.../file/`. It looks like this. 
 
 ```js
 RewriteEngine On
-RewriteRule (.+)\.html$ /$1/ [L,R=301]
-```
-
-The only thing I needed now was to make my old domain point to the new blog with a general 301 redirect. 
-
-```js
-RewriteEngine On
+RewriteRule (.+)\.html$ https://filipbech.github.io/$1/ [L,R=301]
 RewriteRule ^(.*)$ https://filipbech.github.io/$1 [R=301]
 ```
 
