@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Grunt to compile sass on your mac - or how to get started with grunt and scss
-permalink: /2013/10/add-compass-to-your-grunt-setup.html/
+permalink: /2013/10/using-grunt-to-compile-sass-on-your-mac/
 ---
 
 I assume you already know what sass/scss is, so I wont go into why I love sass and prefer it over less/stylus etc. Go read about it on [http://sass-lang.com](sass-lang.com)
