@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.4 $helvetica;
   color: $darkGray;
 }
 
@@ -28,6 +28,7 @@ body {
   max-width: 740px;
   padding: 0 10px;
   width: 100%;
+  overflow:hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -118,11 +119,11 @@ img {
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
-  background: $lightGray;
+  background: transparentize($blue,0.5);
 }
 ::selection {
   color: $black;
-  background: $lightGray;
+  background: transparentize($blue,0.5);
 }
 
 // Nicolas Gallagher's micro clearfix hack
@@ -145,9 +146,6 @@ img {
 // .masthead
 //
 
-.wrapper-masthead {
-  margin-bottom: 50px;
-}
 
 .masthead {
   padding: 20px 0;
@@ -265,6 +263,8 @@ nav {
     font-size: 15px;
   }
 }
+
+
 
 .wrapper-footer {
   margin-top: 50px;

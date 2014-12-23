@@ -2,10 +2,10 @@
 layout: default
 ---
 
-<article class="post">
+<div class="content">
   <h1>{{ page.title }}</h1>
 
-  <div class="entry">
+  <div class="post">
     {{ content }}
   </div>
 
@@ -14,4 +14,4 @@ layout: default
   </div>
 
   {% include disqus.html disqus_identifier=page.disqus_identifier %}
-</article>
+</div>
