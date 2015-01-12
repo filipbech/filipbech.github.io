@@ -95,8 +95,9 @@ socket.on("draw", function(params) {
 Thats it. You can find my demo at [http://flipboard.herokuapp.com](flipboard.herokuapp.com). It does a little more stuff, but I promise its all just as easy with socket.io...
 
 Ideas (and hints) for you to build on from this point
-* make a clear-button.
-* make rooms so multiple boards can be drawn without affecting each other (and maybe a list of rooms)
-* Make a list of users in a room - see who is painting
-* Have new connected users “catch up” to what the others are seeing
-* Optimize so you paint instantly locally, and only send the paint-events to other users than self
+
+- make a clear-button.
+- make rooms so multiple boards can be drawn without affecting each other (and maybe a list of rooms)
+- Make a list of users in a room - see who is painting
+- Have new connected users “catch up” to what the others are seeing
+- Optimize so you paint instantly locally, and only send the paint-events to other users than self
