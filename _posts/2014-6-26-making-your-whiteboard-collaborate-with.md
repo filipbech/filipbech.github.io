@@ -78,7 +78,8 @@ io.on('connection', function(socket){
 });
 ```
 
-and the client is equally simple…
+and the client is equally simple...
+
 ```js
 /* see the canvas stuff in the previous blogpost */
 canvas.addEventListener("touchmove", function(e) {
