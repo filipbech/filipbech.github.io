@@ -6,7 +6,7 @@ permalink: /2015/01/announcing-skyform-enhancing-form-field-layout/
 
 ![_config.yml]({{ site.baseurl }}/images/posts/forms.jpg)
 
-TL;DR: [See skyform on github](https://github.com/filipbech/skyform).
+TL;DR: [Go play with the demo](http://filipbech.github.io/demos/skyform) - [See skyform on github](https://github.com/filipbech/skyform).
 
 The last couple of years, I've been wanting to ditch jQuery from our projects at skybrud.dk where I work. No doubt jQuery has been the biggest game-changer in frontend development since javascript itself, but this was what dr Henry Cloud calls a "Necessary Ending". Ever since we started using angularJS, we had only one thing holding back this enivitable ending - forms. We depend(ed) on jQuery uniform for styling of form fields, and the forms that Umbraco (the CMS of our choise) spits out, uses jQuery for handling conditional fields and for validation. We had a couple of slow days at the office, so I set off to rid these dependencies.
 
