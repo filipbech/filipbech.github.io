@@ -16,3 +16,4 @@ The situation is nothing new - some fields just aren't styleable. The idea behin
 
 I love and already heavily rely on angularJS, so the obvious solution for me was to use that powerfull beast already being loaded. What I wanted was for form-fields to automatically be "enhanced" unless specifically told not to. Directives are a perfect match - so thats what I went for. I wont go through all the code - you can [find it on github](https://github.com/filipbech/skyform).
 
+[Go play with the demo](http://filipbech.github.io/demos/skyform), and read through the features on the repository. Github Issues and pull-requests are much appreciated. 

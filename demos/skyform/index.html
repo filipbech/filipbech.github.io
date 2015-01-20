@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>skyform</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="all">
+
+</head>
+<body ng-app="demo">
+	<form action="#">
+		<label>Textfield: <input type="text" name="textfield" placeholder="Here is a regular textfield" /></label><br/>
+		<label>Password: <input type="password" name="password" placeholder="Here is a password field" /></label><br/>
+		<label><input type="checkbox" name="checkbox" value="pick me" /> Pick me</label><br/>
+		<label>Choose something: <select name="selector"><option value="1">Item 1</option><option value="2">Item 2</option></select></label><br/>
+		<label>Upload field <input type="file" name="" /></label><br/>
+		<label><input type="radio" name="radio" value="radio1" /> Radio 1</label><label><input type="radio" name="radio" value="radio2" /> Radio 2</label><br/>
+		<label>Textarea: <textarea></textarea></label><br/>
+		<button>Here is a button</button>
+		<input type="reset" value="Reset button" />
+
+	</form>
+
+<script src="angular-1.2.25.js"></script>
+<script src="sky-form.js"></script>
+<script>
+	angular.module('demo',['skyform']);
+
+
+</script>
+
+
+</body>
+</html>
