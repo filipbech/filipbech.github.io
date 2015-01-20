@@ -14,6 +14,6 @@ In a later post I might write up on how we (myself and [Rene Pjengaard](https://
 
 The situation is nothing new - some fields just aren't styleable. The idea behind the solution is stolen from [jQuery.uniform](http://uniformjs.com/) - and it is bascially to wrap the non styleable fields in a styleable div, and make the field be transparent and ontop the styled element. That way it is still real form fields so you have all the accesibility, and the user can still change values and post the form in the good old fashion way, if something should happen so your javascript doesn't run.
 
-I love and already heavily rely on angularJS, so the obvious solution for me was to use that powerfull beast already being loaded. What I wanted was for form-fields to automatically be "enhanced" unless specifically told not to. Directives are a perfect match - so thats what I went for. I wont go through all the code - you can [find it on github](https://github.com/filipbech/skyform).
+I love and already heavily rely on angularJS, so the obvious solution for me was to use that powerfull beast already being loaded. What I wanted was for form-fields to automatically be "enhanced" unless specifically told not to. Directives are a perfect match - so thats what I went for. I wont go through all the code - you can [find it on github](https://github.com/filipbech/skyform/blob/master/sky-form.js).
 
 [Go play with the demo](http://filipbech.github.io/demos/skyform), and read through the features on the repository. Github Issues and pull-requests are much appreciated. 
