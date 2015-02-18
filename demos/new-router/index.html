@@ -1,0 +1,66 @@
+<html>
+<body ng-app="app" ng-controller="appCtrl as app">
+
+	<h1>Demo of the new angular router</h1>
+	<em>view-source to see code - its all inline :-D</em>
+
+	<ul>
+		<li><a router-link="home">Home</a></li>
+		<li><a router-link="page">Page</a></li>
+		<li><a router-link="detail({id:123})">Detail 123</a></li>
+	</ul>
+
+	<div router-view-port></div>
+
+	<script src="angular.js"></script>
+	<script src="router.es5.js"></script>
+	<script>
+		angular.module('app',['ngNewRouter','layout','app.page','app.detail','app.home']);
+
+		/**
+		 * Uncomment this for links with no hash (remember to add a base-tag then)
+		 *
+		 * angular.module('app').config(function($locationProvider) {
+		 *	$locationProvider.html5Mode(true);
+		 * });
+		 **/
+		angular.module('app').controller('appCtrl', function($router) {
+			$router.config([
+				{
+					path:'/',
+					component:'home'
+				},
+				{
+					path:'/page',
+					component:'page'
+				},
+				{
+					path:'/detail/:id',
+					component:'detail'
+				}
+			]);
+		});
+
+		angular.module('app.home', []).controller('HomeController', [function () {
+			this.name = 'Home';
+		}]);
+		angular.module('app.detail', []).controller('DetailController', ['$routeParams',function ($routeParams) {
+			this.id = $routeParams.id;
+		}]);
+		angular.module('app.page', []).controller('PageController', [function () {
+			// At the moment this controller does nothing... :-D
+		}]);
+
+		/* Instead of using actual files for templates, just put them straight into the templatecache... */
+		angular.module('layout',[]).run(function($templateCache) {
+			$templateCache.put('./components/home/home.html','<h3>Welcome {{home.name}}!</h3>');
+
+			$templateCache.put('./components/detail/detail.html','<h3>Showing id from url: {{detail.id}}!</h3>');
+
+			$templateCache.put('./components/page/page.html','<h3>This is a subpage</h3>');
+
+		});
+
+	</script>
+</body>
+</html>
