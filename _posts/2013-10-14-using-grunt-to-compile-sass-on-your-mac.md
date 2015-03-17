@@ -33,7 +33,7 @@ When you have this file, you can open your terminal (and "cd" to your projects l
 
 ```js
 npm install
-``
+```
 
 This will create a folder called node_modules that holds all the modules you need for this project. You will eventually have lots of duplicates of this folder when you have many projects, but the power of this is that they have the correct versions (According to your package.json file) so nothing will break.
 
