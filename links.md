@@ -6,6 +6,9 @@ permalink: /links/
 
 On this page you can find links to slides, blogposts, code-examples etc. from articles and talks I've done recently.
 
+###Angular 2.0
+ngAarhus, June 2015
+Video [here](https://www.youtube.com/watch?v=c6haa0MJc1w), Demo-app [here](https://github.com/filipbech/ng2-parties)
 
 ###Introduction to Webcomponents and Polymer
 AarhusJS, Feb 2015
