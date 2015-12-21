@@ -6,6 +6,10 @@ permalink: /links/
 
 On this page you can find links to slides, blogposts, code-examples etc. from articles and talks I've done recently.
 
+###Article: So whats up with Angular these days...
+24 days in Umbraco, 16. Dec 2015
+Link: [http://24days.in/umbraco/2015/so-whats-up-with-angular-these-days/](http://24days.in/umbraco/2015/so-whats-up-with-angular-these-days/)
+
 ###Angular 2.0
 ngAarhus, June 2015
 Video [here](https://www.youtube.com/watch?v=c6haa0MJc1w), Demo-app [here](https://github.com/filipbech/ng2-parties)
