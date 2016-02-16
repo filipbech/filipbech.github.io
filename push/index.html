@@ -12,8 +12,8 @@
 	<script>
 
 function sendSubscriptionToServer(sub) {
-	var request = new Request('http://tesladash.dk/push/api.php?info=' + JSON.stringify(sub), {});
-	fetch(request);
+	//var request = new Request('http://tesladash.dk/push/api.php?info=' + JSON.stringify(sub), {});
+	//fetch(request);
 }
 
 var isPushEnabled = false;
@@ -38,9 +38,14 @@ navigator.serviceWorker.register('/push/sw.js').then(function() {
 
 	navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
 
+		navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
+
 		serviceWorkerRegistration.pushManager.getSubscription()
 		.then(function(subscription) {  
 			
+			var div = document.createElement('div');
+			div.innerHTML = subscription.endpoint;
+			document.body.appendChild(div);
 
 		
 			pushButton.addEventListener('click', function() {
@@ -49,6 +54,10 @@ navigator.serviceWorker.register('/push/sw.js').then(function() {
 					subscription.unsubscribe().then(function(subscription) {
 						isPushEnabled = false;
 						pushButton.textContent = 'Subscribe';
+						var div = document.createElement('div');
+						var div = document.createElement('div');
+						div.innerHTML = subscription.endpoint;
+						document.body.appendChild(div);
 						
 					});
 				} else {
@@ -80,6 +89,7 @@ navigator.serviceWorker.register('/push/sw.js').then(function() {
 		.catch(function(err) {  
 			console.warn('Error during getSubscription()', err);  
 		});  
+	});
 	});  
 });  
 	</script>
