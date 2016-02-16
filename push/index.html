@@ -40,34 +40,34 @@ navigator.serviceWorker.register('/push/sw.js').then(function() {
 
 		navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
 
+
+		pushButton.addEventListener('click', function() {
+	
+			if(isPushEnabled) {
+				subscription.unsubscribe().then(function(subscription) {
+					isPushEnabled = false;
+					pushButton.textContent = 'Subscribe';
+					var div = document.createElement('div');
+					var div = document.createElement('div');
+					div.innerHTML = subscription.endpoint;
+					document.body.appendChild(div);
+					
+				});
+			} else {
+				serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
+					isPushEnabled = true;
+					sendSubscriptionToServer(subscription);
+				});
+		
+			}
+		});
+
 		serviceWorkerRegistration.pushManager.getSubscription()
 		.then(function(subscription) {  
 			
 			var div = document.createElement('div');
 			div.innerHTML = subscription.endpoint;
 			document.body.appendChild(div);
-
-		
-			pushButton.addEventListener('click', function() {
-
-				if(isPushEnabled) {
-					subscription.unsubscribe().then(function(subscription) {
-						isPushEnabled = false;
-						pushButton.textContent = 'Subscribe';
-						var div = document.createElement('div');
-						var div = document.createElement('div');
-						div.innerHTML = subscription.endpoint;
-						document.body.appendChild(div);
-						
-					});
-				} else {
-					serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
-						isPushEnabled = true;
-						sendSubscriptionToServer(subscription);
-					});
-
-				}
-			});
 
 
 			if (!subscription) {  
