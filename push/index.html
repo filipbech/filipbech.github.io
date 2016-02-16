@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Push tester</title>
+	<link rel="manifest" href="/push/manifest.json">
+</head>
+<body>
+	
+<button class="js-push-button">Subscribe</button>
+
+	<script>
+
+function sendSubscriptionToServer(sub) {
+	var request = new Request('http://tesladash.dk/push/api.php?info=' + JSON.stringify(sub), {});
+	fetch(request);
+}
+
+var isPushEnabled = false;
+
+var pushButton = document.querySelector('.js-push-button');  
+
+
+
+navigator.serviceWorker.register('/push/sw.js').then(function() {
+	if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
+		console.warn('Notifications aren\'t supported.');  
+		return;  
+	}
+	if (Notification.permission === 'denied') {  
+		console.warn('The user has blocked notifications.');  
+		return;  
+	}
+	if (!('PushManager' in window)) {  
+		console.warn('Push messaging isn\'t supported.');  
+		return;  
+	}
+
+	navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
+
+		serviceWorkerRegistration.pushManager.getSubscription()
+		.then(function(subscription) {  
+			
+
+		
+			pushButton.addEventListener('click', function() {
+
+				if(isPushEnabled) {
+					subscription.unsubscribe().then(function(subscription) {
+						isPushEnabled = false;
+						pushButton.textContent = 'Subscribe';
+						
+					});
+				} else {
+					serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
+						isPushEnabled = true;
+						sendSubscriptionToServer(subscription);
+					});
+
+				}
+			});
+
+
+			if (!subscription) {  
+			// We aren't subscribed to push, so set UI  
+			// to allow the user to enable push  
+
+				isPushEnabled = false;
+				return;  
+			}
+
+			// Keep your server in sync with the latest subscriptionId
+			sendSubscriptionToServer(subscription);
+
+			// Set your UI to show they have subscribed for  
+			// push messages  
+			pushButton.textContent = 'Unsubscribe';  
+			isPushEnabled = true;  
+		})  
+		.catch(function(err) {  
+			console.warn('Error during getSubscription()', err);  
+		});  
+	});  
+});  
+	</script>
+</body>
+</html>
