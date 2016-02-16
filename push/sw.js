@@ -3,7 +3,7 @@ self.addEventListener('push', function(event, a, b) {
 
   var title = '"Sartori Cabernet øko." er på tilbud';  
   var body = 'Sartori Cabernet øko fåes i denne uge til 65 kr. ';  
-  var icon = '/pushy/test.png';  
+  var icon = '/push/test.png';  
   var tag = 'satori-cabernet';
 
   event.waitUntil(  
