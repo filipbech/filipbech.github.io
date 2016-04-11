@@ -6,6 +6,10 @@ permalink: /links/
 
 On this page you can find links to slides, blogposts, code-examples etc. from articles and talks I've done recently.
 
+###Say Hi to mr. Observable (RxJS intro)
+ngAarhus, April 2016
+Video [here](https://www.youtube.com/watch?v=6MDDIByEeGE)
+
 ###Article: So whats up with Angular these days...
 24 days in Umbraco, 16. Dec 2015
 Link: [http://24days.in/umbraco/2015/so-whats-up-with-angular-these-days/](http://24days.in/umbraco/2015/so-whats-up-with-angular-these-days/)
