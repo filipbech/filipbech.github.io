@@ -8,7 +8,7 @@ In Angular 1.x a very used pattern has been to bootstrap your application on the
 
 I am very excited about the philosophy of Angular2, but trying to use it for UI-widgets like described before, turns out to be a struggle since there isn't really a root-component to bootstrap (which is how angular2 starts up). I spend some time investigating, and even though I haven't yet settled on an approach, I thought I would share my thoughts and the good/bad of them.
 
-**TL;DR: Using óne root bodyComponent is probably the simplest approach to this issue.ØØ 
+**TL;DR: Using óne root bodyComponent is probably the simplest approach to this issue.** 
 
 ##1. Approach: Bootstrapping multiple components.
 Just like in Angular1, you can always bootstrap multiple components. Of cause we want our components to be able to share data (like they were in the same app), but we can use platform injectors (since there is only one platform) to instantiate services instead of instantiating them at bootstrap-time. 
@@ -17,7 +17,7 @@ Just like in Angular1, you can always bootstrap multiple components. Of cause we
 //So where we normally to 
 bootstrap(MyRootComponent, [MySharedService]);
 
-//We could do //TODO
+//We could do
 let app = platform(BROWSER_PROVIDERS).application([[BROWSER_APP_PROVIDERS],[MySharedService]]);
 
 // and then bootstrap the individual components
