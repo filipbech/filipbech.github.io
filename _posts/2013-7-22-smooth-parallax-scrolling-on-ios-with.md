@@ -9,16 +9,16 @@ permalink: /2013/07/smooth-parallax-scrolling-on-ios-with/
 
 TL:DR -> go to the bottom of the post to see the code! (demo: [http://cdpn.io/ixKLz](http://cdpn.io/ixKLz))
 
-##So.. parallax scrolling is kinda cool… 
+## So.. parallax scrolling is kinda cool… 
 I came across a project where I needed to do a parallax effect - where elements scroll with different speeds - so I started googling for solutions. Lots came up. But they all more or less worked the same way (somehow calculate the new position of the element every time the scroll-position changes) and had the same problem (on my iPad and iPhone they wait and then jumps after I scroll).
 
 The root of the problem is that in iOS the onscroll-event, (jQuery calls it jQuery.scroll) doesn't fire untill the scroll has stopped (and also doesn't set the scrollPosition untill that time). 
 
-##iScroll to the rescue!
+## iScroll to the rescue!
 So in order to make this work on any iOS device we can't use the native scrolling. iScroll is a javascript library that is the closest thing to feeling like native scrolling that I've found. Basically you just  drop it in, initiate it and you have what feels like regular scrolling without the stupid limitation I explained earlier. But in order to make use of it you have to understand how it works… You basically set a container-element and inside that the native scrolling is disabled. iScroll listens for drag-events inside of the container and moves the inside of the container the opposite direction. 
 (download iScroll or read more about it right here: [http://cubiq.org/iscroll-4](http://cubiq.org/iscroll-4)) 
 
-##Important lessons learnt
+## Important lessons learnt
 1. Since there is no onscroll-event in iScroll we setup a continous loop that checks for the scrollPosition. I recommend doing this with requestAnimationFrame thats optimized for doing something each time the screen refreshes. (I really recommend Paul Irish's [http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/](blogpost) on RAF which also includes a shim that falls back to a setTimeout for older browsers)
 
 2. The elements you dont want to move with the regular scroll-speed must be outside of the iscroll-container. This really bugs me, but the performance is horrible when you are moving something inside of the iScroll-container. Putting them out-side has one pretty big drawback - since iScroll uses css-transforms (it uses translate or translate3d) to move the inside, the iScroll-layer is flattened when scrolled - maybe its a cheap trade-off, but be aware that this makes setting different z-indexes inside and outside of the iScroll container impossible. (I made a simple example to show the problem. Open this on your computer and on an iPad to see the difference (hint: on iOS the blue-element is above all the li's) - [http://codepen.io/filipbech/pen/jDJum](http://codepen.io/filipbech/pen/jDJum)). I googled this over and over, but if anybody can prove me wrong on this, I would be forever gratefull)

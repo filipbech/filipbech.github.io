@@ -52,7 +52,7 @@ bootstrap(BodyComponent, [
 ]);
 ```
 
-##Conclusion
+## Conclusion
 
 **I prefer the second approach**, but dislike the dirty referencing of innerHTML and the global components part of it. It does however seem to be the least of two evils. Of cause Angular2 is still in beta, and everything might change, but I don't really have an idea for how this could/should work.
 

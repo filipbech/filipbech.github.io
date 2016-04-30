@@ -72,7 +72,7 @@ Now lets make a Gruntfile.js-file that creates a default task that runs watch on
   };
 ```
 
-##Now you are done!
+## Now you are done!
 Makeake a .scss file and put it in your scss-folder, and then open your terminal and cd to your project-root and start the watcher by running
 
 ```js
