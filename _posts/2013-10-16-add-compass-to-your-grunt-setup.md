@@ -5,7 +5,7 @@ permalink: /2013/10/add-compass-to-your-grunt-setup.html
 
 ---
 
-This blog post is kind of a "part 2" to my grunt+sass post. You can find that here: [http://www.frontendfrontline.com/2013/10/using-grunt-to-compile-sass-on-your-mac](http://www.frontendfrontline.com/2013/10/using-grunt-to-compile-sass-on-your-mac)
+This blog post is kind of a "part 2" to my grunt+sass post. You can find that here: [http://filipbech.github.io/2013/10/using-grunt-to-compile-sass-on-your-mac/](http://filipbech.github.io/2013/10/using-grunt-to-compile-sass-on-your-mac/)
 
 The main reason I prefered sass over the alternatives, when I first started preprocessing css, was Compass. It has a huge library of mixing and functions, and some great tools for generating sprites and more… (read all about it on compass-style.org)
 
