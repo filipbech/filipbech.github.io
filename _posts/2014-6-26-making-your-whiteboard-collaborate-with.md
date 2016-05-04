@@ -7,7 +7,7 @@ permalink: /2014/06/making-your-whiteboard-collaborate-with/
 
 ![_config.yml]({{ site.baseurl }}/images/posts/socket.jpg)
 
-So we build a whiteboard with touch-writing ([http://www.frontendfrontline.com/2014/06/making-whiteboard-with-canvas-and-touch/](http://www.frontendfrontline.com/2014/06/making-whiteboard-with-canvas-and-touch/)), now lets use a websocket to communicate directly with the server and allow for multiple people to draw on the same board. Websocket is an on-going open connection between the server and the browser (client) that allows both parties to push messages to the other and to listen for messages. 
+So we build a whiteboard with touch-writing ([http://filipbech.github.io/2014/06/making-whiteboard-with-canvas-and-touch/](http://filipbech.github.io/2014/06/making-whiteboard-with-canvas-and-touch/)), now lets use a websocket to communicate directly with the server and allow for multiple people to draw on the same board. Websocket is an on-going open connection between the server and the browser (client) that allows both parties to push messages to the other and to listen for messages. 
 
 Websockets isn’t really "new" (the first spec is from 2009), but lots of people still don’t use it. The spec, as always, make it seem complicated (http://dev.w3.org/html5/websockets/) but with socket.IO it really isn't. Its very easy to use, unifies the server (running nodeJS) and client APIs and fallbacks to long-polling, so you can basically use it today and have full support for all the browsers you wish to use… don’t wait - start using it - everybody loves realtime… seriously start coding right now! 
 a
@@ -42,8 +42,8 @@ This will startup a server that will serve any file from the public folder. So g
 
 ```js
 io.on('connection', function(socket){
-  console.log(‘we have a new connection’);
-  socket.emit(‘myMessage’,’Hi there");
+  console.log('we have a new connection');
+  socket.emit('myMessage','Hi there');
 });
 ```
 
