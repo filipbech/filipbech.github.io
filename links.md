@@ -6,6 +6,10 @@ permalink: /links/
 
 On this page you can find links to slides, blogposts, code-examples etc. from articles and talks I've done recently.
 
+###Angular + CMS = Single Page Application
+Internet Week Denmark, May 2016
+Video [here](https://www.youtube.com/watch?v=r-wCZClTd9E)
+
 ###Say Hi to mr. Observable (RxJS intro)
 ngAarhus, April 2016
 Video [here](https://www.youtube.com/watch?v=6MDDIByEeGE)
