@@ -6,11 +6,11 @@ permalink: /2016/08/payment-request-first-impressions
 
 With Chrome 53 thius pretty cool new feature is available for the masses. It's called Payment Request API and its going through [standardization](https://www.w3.org/TR/payment-request/).
 
-Its the answer to the long-asked question "how do we achieve better conversion on mobile". The problem with checking out on your phone is that users dont want to type everything in, especially not long numbers (like for creditcards). Now the browser can show the user prefilled custom dialogbox that the user can just confirm with one click. 
-
 ![_config.yml]({{ site.baseurl }}/images/posts/payment-request.jpg)
 
 *I am working for a client on a prototype to launch when Chrome 53 hits stable, and I'm pretty excited to see if we can notice better conversion-rates.*
+
+Its the answer to the long-asked question "how do we achieve better conversion on mobile". The problem with checking out on your phone is that users dont want to type everything in, especially not long numbers (like for creditcards). Now the browser can show the user prefilled custom dialogbox that the user can just confirm with one click. 
 
 The API is simple and cool, but it has a couple of gotchas that I had to wrap my ahead around. So I thought I would share my experience here...
 
@@ -79,3 +79,7 @@ When you look at it like this, its still pretty simple but now it is even more p
 
 ## Get started
 You can start using this today. Its in Chrome 53 (which at the time of this writing is in beta). The only requirement is that you have to use a secure connection (`https`), but I guess if you are processing creditcard information, you are hopefully doing that already. (even though it also works on localhost, it does make development a litle harder, since you dont run localhost on your phone, and it doesn't accept phony vertificates).
+
+A great place to read more is the integration guide on webfundamentals over at [developers.google.com](https://developers.google.com/web/fundamentals/primers/payment-request/?hl=en)
+
+As always, reach out on twitter [@filipbech](https://twitter.com/filipbech) if you have questions or comments. 
