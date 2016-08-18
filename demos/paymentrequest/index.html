@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PaymentRequest Demo</title>
+	<meta name="viewport" content="width=device-width">
+</head>
+<body>
+	
+	<h1>Basket</h1>
+	<ul>
+		<li>Product 1</li>
+		<li>Product 2</li>
+		<li>Product 3</li>
+		<li>Product 4</li>
+	</ul>
+
+	<button disabled>Go to regular checkout (not implemented)</button><br/>
+	or<br/>
+	<button id="button" style="background:green;color:white;font-weight:bold;">One-click checkout</button>
+
+	<script>
+
+		if(!window.PaymentRequest){
+			alert('Your browser doesn\'t support this. Chrome 53+ on Android does!');
+		}
+			
+		var supportedInstruments = [{
+			supportedMethods: ['visa', 'mastercard']
+		}];
+
+		  var details = {
+		    total: {
+		      label: 'Total due',
+		      amount: { currency: 'DKK', value : '765.00' }
+		    },
+		    shippingOptions: []
+		  };
+
+		  var options = {
+		    requestShipping: true,
+		    requestPayerEmail: true,
+		    requestPayerPhone: true
+		  };
+
+
+		document.getElementById('button').addEventListener('click', function() {
+			var request = new PaymentRequest(supportedInstruments, details, options);
+
+			request.addEventListener('shippingaddresschange', event => {
+				event.updateWith(fetch('getshipping.json')
+					.then(response => {
+						return response.json();
+					}).then(options => {
+						details.shippingOptions = options;
+						return details;
+					}));
+			});
+
+			request.show()
+				.then(result => {
+					return fetch('pay.json')
+						.then(response=> {
+							document.body.innerHTML = '<h1>Complete</h1><p>Order was completed with creditcard: '+result.details.cardNumber+'</p>';
+							return result.complete('success');
+						}).catch(err=> {
+							return result.complete('fail');
+							throw(new Error('Error happened in ajax'));
+						});
+				}).catch(err=> {
+					throw(new Error('Error happened in PaymentRequest'));
+				})
+
+		});
+
+	</script>
+
+
+</body>
+</html>

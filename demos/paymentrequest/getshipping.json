@@ -1,0 +1,11 @@
+[
+  {
+    "amount": {
+      "currency": "DKK", 
+      "value": 0
+    }, 
+    "selected": true, 
+    "id": "freepostdk", 
+    "label": "Gratis PostDK"
+  }
+]
