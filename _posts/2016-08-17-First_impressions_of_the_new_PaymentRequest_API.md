@@ -6,6 +6,8 @@ permalink: /2016/08/payment-request-first-impressions
 
 With Chrome 53 this pretty cool new feature is available for the masses. It's called Payment Request API and its going through [standardization](https://www.w3.org/TR/payment-request/).
 
+TL;DR: [Demo-link](https://filipbech.github.io/demos/paymentrequest/)
+
 ![_config.yml]({{ site.baseurl }}/images/posts/payment-request.jpg)
 
 *I am working for a client on a prototype to launch when Chrome 53 hits stable, and I'm pretty excited to see if we can notice better conversion-rates.*
@@ -82,6 +84,8 @@ When you look at it like this, its still pretty simple but now it is even more p
 
 ## Get started
 You can start using this today. Its in Chrome 53 (which at the time of this writing is in beta). The only requirement is that you have to use a secure connection (`https`), but I guess if you are processing creditcard information, you are hopefully doing that already. Even though it also works on localhost, this does make development a litle harder, since you don't run localhost on your phone, and it doesn't accept phony certificates. To work around it I used remote debugging via USB with an Android device from our device-wall, and a secure build-server that was just laying idle (if you find yourself lacking the server, you can find free ssl hosting out there - github pages is a good example).
+
+I made a demo for you to try (remember as of this writing chrome 53 is currently the beta version, and it only works on Android): [https://filipbech.github.io/demos/paymentrequest/](https://filipbech.github.io/demos/paymentrequest/)
 
 A great place to read more is the integration guide on webfundamentals over at [developers.google.com](https://developers.google.com/web/fundamentals/primers/payment-request/?hl=en)
 
