@@ -1,10 +1,10 @@
 ---
 layout: post
-title: First impressions of the new PaymentRequest API
+title: First impressions of the new Payment Request API
 permalink: /2016/08/payment-request-first-impressions
 ---
 
-With Chrome 53 thius pretty cool new feature is available for the masses. It's called Payment Request API and its going through [standardization](https://www.w3.org/TR/payment-request/).
+With Chrome 53 this pretty cool new feature is available for the masses. It's called Payment Request API and its going through [standardization](https://www.w3.org/TR/payment-request/).
 
 ![_config.yml]({{ site.baseurl }}/images/posts/payment-request.jpg)
 
@@ -14,7 +14,7 @@ Its the answer to the long-asked question "how do we achieve better conversion o
 
 The API is simple and cool, but it has a couple of gotchas that I had to wrap my ahead around. So I thought I would share my experience here...
 
-The basic setup is straight forward. Construct a new `PaymentRequest` with some options and call the `show()` method on it. The show method return a promise that will resolve with the filled in data in a special object you then call `complete()` on when your server/paymentprovider determines that the order is confirmed. 
+The basic setup is straightforward. Construct a new `PaymentRequest` with some options and call the `show()` method on it. The show method return a promise that will resolve with the filled in data in a special object you then call `complete()` on when your server/paymentprovider determines that the order is confirmed. 
 
 ```js
 var supportedInstruments = [{
@@ -78,7 +78,7 @@ request.addEventListener('shippingaddresschange', event => {
 When you look at it like this, its still pretty simple but now it is even more powerful. YAY! 
 
 ## Get started
-You can start using this today. Its in Chrome 53 (which at the time of this writing is in beta). The only requirement is that you have to use a secure connection (`https`), but I guess if you are processing creditcard information, you are hopefully doing that already. (even though it also works on localhost, it does make development a litle harder, since you dont run localhost on your phone, and it doesn't accept phony vertificates).
+You can start using this today. Its in Chrome 53 (which at the time of this writing is in beta). The only requirement is that you have to use a secure connection (`https`), but I guess if you are processing creditcard information, you are hopefully doing that already. Even though it also works on localhost, this does make development a litle harder, since you don't run localhost on your phone, and it doesn't accept phony certificates. To work around it I used remote debugging via USB with an Android device from our device-wall, and a secure build-server that was just laying idle (if you find yourself lacking the server, you can find free ssl hosting out there - github pages is a good example).
 
 A great place to read more is the integration guide on webfundamentals over at [developers.google.com](https://developers.google.com/web/fundamentals/primers/payment-request/?hl=en)
 
