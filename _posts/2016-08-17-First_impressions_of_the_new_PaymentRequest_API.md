@@ -85,7 +85,7 @@ When you look at it like this, its still pretty simple but now it is even more p
 ## Get started
 You can start using this today. Its in Chrome 53 (which at the time of this writing is in beta). The only requirement is that you have to use a secure connection (`https`), but I guess if you are processing creditcard information, you are hopefully doing that already. Even though it also works on localhost, this does make development a litle harder, since you don't run localhost on your phone, and it doesn't accept phony certificates. To work around it I used remote debugging via USB with an Android device from our device-wall, and a secure build-server that was just laying idle (if you find yourself lacking the server, you can find free ssl hosting out there - github pages is a good example).
 
-I made a demo for you to try (remember as of this writing chrome 53 is currently the beta version, and it only works on Android): [https://filipbech.github.io/demos/paymentrequest/](https://filipbech.github.io/demos/paymentrequest/)
+I made a demo for you to try (remember as of this writing chrome 53 is currently the beta version, and it only works on Android): [Demo](https://filipbech.github.io/demos/paymentrequest/) -  [Source](https://github.com/filipbech/filipbech.github.io/tree/master/demos/paymentrequest).
 
 A great place to read more is the integration guide on webfundamentals over at [developers.google.com](https://developers.google.com/web/fundamentals/primers/payment-request/?hl=en)
 
