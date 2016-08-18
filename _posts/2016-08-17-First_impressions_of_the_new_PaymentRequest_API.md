@@ -29,7 +29,7 @@ var details = {
 	shippingOptions: [{
 		id: 'free',
 		label: 'Free shipping',
-		amount: {currency: 'DKK', value: '0.00'},
+		amount: { currency: 'DKK', value: '0.00' },
 		selected: true
 	}]
 };
@@ -42,18 +42,19 @@ var options = {
 
 var request = new PaymentRequest(supportedInstruments, details, options);
 
-request.show().then(result => {
-	return fetch('/pay', { 
-		method:'POST', 
-		body: JSON.stringify({ cardNum: result.details.cardNumber }) 
-	}).then(response => {
-		// payment was completed
-		return result.complete('success');
-	}, err => {
-		// server declined 
-		return result.complete('fail');
+request.show()
+	.then(result => {
+		return fetch('/pay', { 
+			method:'POST', 
+			body: JSON.stringify({ cardNum: result.details.cardNumber }) 
+		}).then(response => {
+			// payment was completed
+			return result.complete('success');
+		}, err => {
+			// server declined 
+			return result.complete('fail');
+		});
 	});
-});
 
 ```
 
@@ -69,7 +70,9 @@ request.addEventListener('shippingaddresschange', event => {
 		method:'POST', 
 		body: JSON.stringify({ address: event.target.shippingAddress }) 
 	}).then(response => {
-		details.shippingsOptions = response.data;
+		return response.json();
+	}).then(options => {
+		details.shippingsOptions = options;
 		return details;
 	}));
 });
