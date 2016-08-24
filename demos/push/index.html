@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Push tester</title>
+	<link rel="manifest" href="/demos/push/manifest.json">
+</head>
+<body>
+
+<h1>PushSubscriptionManager</h1>
+<p>Build with a class, lambda-functions, destructuring and default-parameters. And of cause progressively - all though it doesn't do much if your browser doesn's support serviceworker.</p>
+<p>Open your console to see the endpoint info...</p>
+<p>Run this curl command to send the push notification.</p>
+<pre>
+	<code>
+	curl --header "Authorization: key=##APIKEY##" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"##ID##\"]}"
+	</code>
+</pre>
+	
+<button class="js-push-button"></button>
+
+<script src="/demos/push/subscription.js"></script>
+</body>
+</html>
