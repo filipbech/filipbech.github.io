@@ -23,6 +23,11 @@ or simply just `*`
 
 The brillian [Jeff Posnick](https://twitter.com/jeffposnick) reached out to me an pointed me to his answer on this [stackoverflow-post](http://stackoverflow.com/questions/39109789/what-limitations-apply-to-opaque-responses/39109790#39109790). So, it turns out, you can use a no-cors request and receive an opaque-response (when cors-headers are not sent). You cannot open the response to verify the contents from your serviceworker - you actually don't know if it's a successful response or a server-error. But if you can live with that risc you CAN use your seviceworker to cache files from CDN's that doesn't serve this header. Another gotcha is that it isn't possible with the ´cache´-api (as in ´cache.addAll([...cdnImages])´) as it only accepts response-codes that 2xx, so you have to manually run fetch and stuff the opaque response in the cache. (just read the stackoverflow answer and it makes sense.)
 
+```js
+const request = new Request('https://third-party-no-cors.com/', { mode: 'no-cors' });
+fetch(request).then(response => cache.put(request, response));
+```
+
 ## You want the other host to handle it
 So the quick answer is to pick a host that does this already, but ofcause the question is how its done, so you can do it on your own subdomain (or maybe you run a CDN). 
 
