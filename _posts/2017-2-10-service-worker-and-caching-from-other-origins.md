@@ -13,9 +13,9 @@ Serviceworker gives you a programmable cache and acts as a proxy for all outgoin
 There are basically two different approaches, and it comes down to which serviceworker is in control of the files. Maybe you want your Progressive Web App (PWA) to control the caching, or you want the other host (whether its yourself or not doesn't really matter) to control it. 
 
 ## You want your service-worker to be in control
-This is what you probably wan't. Its where you are in control, and you get to decide what files are cached and for how long etc. The problem I faced was that even though I handled it like any other request, it just wouldn't go into the cache. Looking around I found lots of examples where it worked (with google-fonts etc.) - super frustrating. After digging deeper into the issue, it turns out that the cdn-files needs to be served with cors-headers, because (ofcause) javascript can't use third-party content if they don't. So its simple - on your static fileserver you should add these headers to your server-settings, or you could simply choose a CDN that does this for you.
+This is what you probably want. Its where you are in control, and you get to decide what files are cached and for how long etc. The problem I faced was that even though I handled it like any other request, it just wouldn't go into the cache. Looking around I found lots of examples where it worked (with google-fonts etc.) - super frustrating. After digging deeper into the issue, it turns out that the cdn-files needs to be served with cors-headers, because (ofcause) javascript can't use third-party content if they don't. So its simple - on your static fileserver you should add these headers to your server-settings, or you could simply choose a CDN that does this for you.
 
-`access-control-allow-origin: http://firstparty.com`
+`access-control-allow-origin: https://firstparty.com`
 
 or simply just `*`
 
