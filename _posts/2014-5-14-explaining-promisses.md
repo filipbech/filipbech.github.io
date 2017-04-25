@@ -9,7 +9,7 @@ permalink: /2014/06/explaining-promisses/
 
 Native promises are landing in browser land these days, so I thought I would do a little writeup on that!
 
-A javascript promise is a way to handle an asynchronous action, and deal with that in our favourite otherwise synchronous programming language (javascript). Since support for native promises are still rare, I will try to explain using the jQuery syntax for promises for now. In a later blogpost I will compare that to the native promises and $q which is the implementation that is used in Angular (and elsewhere).
+A javascript promise is a way to handle an asynchronous action, and deal with that in our favourite otherwise synchronous programming language (javascript). Since support for native promises are still rare, I will try to explain using the jQuery syntax for promises for now. In a later blogpost I will compare that to the native promises and $q which is the implementation that is used in AngularJS (and elsewhere).
 
 Traditionally asynchronous functions has been dealt with using the callback pattern, where you pass in a callback function to the asynchronous function, and then the callback function will be executed when the asynchronous function is done. This works, but it complicates error-handling, and makes execution-order very hard to visualize. Enter promises!
 

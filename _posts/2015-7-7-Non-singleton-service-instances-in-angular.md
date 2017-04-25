@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Using non-singleton services instances in angular 1.x
+title: Using non-singleton services instances in angularJS 1.x
 permalink: /2015/07/Non-singleton-service-instances-in-angular/
 ---
 
 TL;DR: [Check out the repository here](https://github.com/skybrud/sky-list)
 
-I love angular and I use services everywhere in my code. However I wanted to share some functionality between components with the option of sharing or not-sharing state. Services are always singletons in AngularJS today so that wasn't a viable solution.
+I love angularJS and I use services everywhere in my code. However I wanted to share some functionality between components with the option of sharing or not-sharing state. Services are always singletons in AngularJS today so that wasn't a viable solution.
 
 I didn't want to have the service be a factory that I should `new` myself, because that would be hard to test. 
 
