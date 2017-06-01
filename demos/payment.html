@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment Request</title>
+</head>
+<body>
+    <button id="buy">Buy now</button>
+
+    <script>
+		const supportedInstruments = [
+            { supportedMethods: ['basic-card'] }
+        ];
+
+        const paymentDetails = {
+            total: {
+                label: 'Total',
+                amount: { currency: 'USD', value: 95 }
+            },
+            displayItems:[{
+                label: 'Subtotal',
+                amount: { currency: 'USD', value: 85 }
+            },{
+                label: 'Tax',
+                amount: { currency: 'USD', value: 10 }
+            }],
+            shippingOptions:[]
+        };
+
+        const options = { requestShipping: true, requestPayerName: true, requestPayerPhone: true, requestPayerEmail: true };
+
+        const shippingOptions = [{
+            id: 'free',
+            selected: true,
+            label: 'Free shipping (2-3 weeks)',
+            amount: { currency: 'USD', value: 0 }
+        },{
+            id: 'express',
+            selected: false,
+            label: 'Express shipping (24 hours)',
+            amount: { currency: 'USD', value: 8 }
+        }];
+
+		document.getElementById('buy').addEventListener('click', function() {
+			var request = new PaymentRequest(supportedInstruments, paymentDetails, options);
+			request.addEventListener('shippingaddresschange', e => {
+				if(e.target.shippingAddress) {
+                    paymentDetails.shippingOptions = shippingOptions;
+                }
+
+                e.updateWith(new Promise((res,rej) => {
+                    setTimeout(_ => {
+                        res(paymentDetails);
+                    }, 500);
+                }));
+			});
+
+            request.addEventListener('shippingoptionchange', e => {
+                if(e.target.shippingOption === 'free') {
+                    paymentDetails.total.amount.value = 95;
+                }
+                if(e.target.shippingOption === 'express') {
+                    paymentDetails.total.amount.value = 103;
+                }
+
+                paymentDetails.shippingOptions = shippingOptions.map(item => {
+                    item.selected = e.target.shippingOption === item.id;
+                    return item;
+                });
+                
+                e.updateWith(new Promise((res,rej) => {
+                    setTimeout(_ => {
+                        res(paymentDetails);
+                    }, 500);
+                }));
+            });
+
+			request.show()
+				.then(result => {
+                    return new Promise((res,rej) => {
+                        setTimeout(_ => {
+                            console.log('yihaa', result);
+                            res(result.complete('success'));
+                        }, 500);
+                    });
+                }).catch(err=> {
+					throw(new Error('Error happened in PaymentRequest'));
+				})
+		});
+    </script>
+</body>
+</html>
