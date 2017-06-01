@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CredentialManagement</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>CredentialManagement</title>
 </head>
 <body>
 
-    <div id="not-logged-in">
-        <h1>Hello, you are not logged in</h1>
-        <button id="login">log in</button>
-    </div>
+	<div id="not-logged-in">
+		<h1>Hello, you are not logged in</h1>
+		<button id="login">log in</button>
+	</div>
 
-    <div id="login-form" style="display:none">
-        <h1>Login here</h1>
-        <form action="auth.html" id="form"> 
-            <input type="text" autocomplete="username" name="username" placeholder="username" /><br/>
-            <input type="password" autocomplete="new-password" name="password" placeholder="password"/><br/>
-            <button>Sign in</button>
-        </form>
-    </div>
+	<div id="login-form" style="display:none">
+		<h1>Login here</h1>
+		<form action="auth.html" id="form"> 
+			<input type="text" autocomplete="username" name="username" placeholder="username" /><br/>
+			<input type="password" autocomplete="new-password" name="password" placeholder="password"/><br/>
+			<button>Sign in</button>
+		</form>
+	</div>
 
-    <div style="display:none" id="is-logged-in">
-        <h1>Hello</h1>
-        <p>You have successfully logged in</p>
-        <button id="logout">Log out</button>
-    </div>
+	<div style="display:none" id="is-logged-in">
+		<h1>Hello</h1>
+		<p>You have successfully logged in</p>
+		<button id="logout">Log out</button>
+	</div>
 
-    <script>
+	<script>
 
-        //Select DOM-elements
-        const form = document.getElementById('form');
-        const logoutBtn = document.getElementById('logout');
-        const loginBtn = document.getElementById('login');
+		//Select DOM-elements
+		const form = document.getElementById('form');
+		const logoutBtn = document.getElementById('logout');
+		const loginBtn = document.getElementById('login');
 
-        const isLoggedInPage = document.getElementById('is-logged-in');
-        const notLoggedInPage = document.getElementById('not-logged-in');
-        const loginFormPage = document.getElementById('login-form');
+		const isLoggedInPage = document.getElementById('is-logged-in');
+		const notLoggedInPage = document.getElementById('not-logged-in');
+		const loginFormPage = document.getElementById('login-form');
 
-        function goToLoggedIn() {
-            //ofcause this should really ask the server to verify first
-            setTimeout(_=>{
-                notLoggedInPage.style.display = 'none';
-                isLoggedInPage.style.display = 'block';
-                loginFormPage.style.display = 'none';
-            },500);
-        }
+		function goToLoggedIn() {
+			//ofcause this should really ask the server to verify first
+			setTimeout(_ => {
+				notLoggedInPage.style.display = 'none';
+				isLoggedInPage.style.display = 'block';
+				loginFormPage.style.display = 'none';
+			},500);
+		}
 
-        function goToLoginForm() {
-            setTimeout(_=>{
-                notLoggedInPage.style.display = 'none';
-                isLoggedInPage.style.display = 'none';
-                loginFormPage.style.display = 'block';
-            },500);
-        }
+		function goToLoginForm() {
+			setTimeout(_ => {
+				notLoggedInPage.style.display = 'none';
+				isLoggedInPage.style.display = 'none';
+				loginFormPage.style.display = 'block';
+			},500);
+		}
 
-        function goToStart() {
-            setTimeout(_=>{
-                notLoggedInPage.style.display = 'block';
-                isLoggedInPage.style.display = 'none';
-                loginFormPage.style.display = 'none';
-            },500);
-        }
+		function goToStart() {
+			setTimeout(_ => {
+				notLoggedInPage.style.display = 'block';
+				isLoggedInPage.style.display = 'none';
+				loginFormPage.style.display = 'none';
+			},500);
+		}
 
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
+		form.addEventListener('submit', e => {
+			e.preventDefault();
 
-            navigator.credentials.store(new PasswordCredential(form));
-            goToLoggedIn();
-        });
+			navigator.credentials.store(new PasswordCredential(form));
+			goToLoggedIn();
+		});
 
-        loginBtn.addEventListener('click', e => {
-            navigator.credentials.get({
-                password: true
-            }).then(cred => {
-                if(cred) {
-                    goToLoggedIn();
-                } else {
-                    goToLoginForm();
-                }
-            });
-        });
+		loginBtn.addEventListener('click', e => {
+			navigator.credentials.get({
+				password: true
+			}).then(cred => {
+				if(cred) {
+					goToLoggedIn();
+				} else {
+					goToLoginForm();
+				}
+			});
+		});
 
-        logoutBtn.addEventListener('click', e => {
-            navigator.credentials.requireUserMediation();
-            goToStart();
-        });
+		logoutBtn.addEventListener('click', e => {
+			navigator.credentials.requireUserMediation();
+			goToStart();
+		});
 
-        // try to automatically sign in when the page loads
-        window.addEventListener('load', e => {
-            navigator.credentials.get({
-                password: true,
-                unmediated: true 
-            }).then(cred => {
-                if(cred) {
-                    goToLoggedIn();
-                }
-            });
-        });
+		// try to automatically sign in when the page loads
+		window.addEventListener('load', e => {
+			navigator.credentials.get({
+				password: true,
+				unmediated: true 
+			}).then(cred => {
+				if(cred) {
+					goToLoggedIn();
+				}
+			});
+		});
 
-    </script>
+	</script>
 </body>
 </html>
