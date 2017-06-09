@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bluetooth LED light bulb</title>
+</head>
+<body>
+	<h1>Web Bluetooth FTW</h1>
+	<button id="btn">Find bulb</button>
+	
+	<form style="display:none;" id="form">
+		<label>Red:<br/><input type="range" min="0" max="255" name="red" value="0" /></label><br/><br/>
+		<label>Green:<br/><input type="range" min="0" max="255" name="green"  value="0" /></label><br/><br/>
+		<label>Blue:<br/><input type="range" min="0" max="255" name="blue"  value="0" /></label><br/><br/>
+		<button>Change color</button>
+	</form>
+
+	<script>
+
+		const CHARACTERISTIC = 0xffe9;
+		const SERVICE = 0xffe5;
+
+		const searchBtn = document.getElementById('btn');
+		const formEle = document.getElementById('form');
+
+		const getColorValue = (r, g, b) => {
+			return new Uint8Array( r == g == b == 255 
+				? [0x56, 0, 0, 0, 0xff, 0x0f, 0xaa]
+				: [0x56, r, g, b, 0x00, 0xf0, 0xaa]
+			);
+		};
+
+		searchBtn.addEventListener('click', event => {
+			navigator.bluetooth.requestDevice({ 
+					filters: [{ 
+						services: [SERVICE]
+					}]
+				})
+				.then(device => { 
+					device.gatt.connect()
+						.then(server => server.getPrimaryService(SERVICE))
+						.then(service => service.getCharacteristic(CHARACTERISTIC))
+						.then(characteristic => {
+
+							//hide the button
+							event.target.style.display = 'none';
+
+							//show the controls-form
+							formEle.style.display = 'block';
+							
+							//listen for changes
+							formEle.addEventListener('submit', e => {
+								e.preventDefault();
+
+								characteristic.writeValue(
+									getColorValue(
+										e.target['red'].value, 
+										e.target['green'].value, 
+										e.target['blue'].value
+									)
+								);
+								return false;
+							});
+
+						})
+				})
+				.catch(error => { 
+					console.warn(error); 
+				});
+		});
+
+	</script>
+</body>
+</html>
