@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cache.keys repro</title>
+</head>
+<body>
+    <p>After loading the page (so the serviceworker is installed), reload the page, and checkout the response of cache.keys() in the console... only contains óne request (the html) and not the javascript module. (if you remove the type-attribute from the script-tag, it works as expected).</p>
+    <script src="app.js" type="module"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(_=> {
+                setTimeout(_=>{
+                    //timeout to ensure the requests have been handled
+                    caches.open('v1').then(cache => cache.keys()).then(console.log);
+                }, 300);
+            })
+        }
+    </script>
+</body>
+</html>
